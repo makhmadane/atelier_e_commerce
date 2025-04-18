@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/css/bootstrap.css">
+
+</head>
+<body>
+    <!--Navbar-->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">GL-TECH</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="col-md-3">
+                <button class="btn btn-secondary float-end" data-toggle="modal" data-target="#modalPanier" onclick="displayPanier()" >Panier</button>
+            </div>
+        </nav>
+    </div>
+    
+    <!--Print products-->
+    <div id="articles" class="row" style="justify-content: space-between; display: flex;  ">
+    </div>
+
+    <!--Modal Panier-->
+    <div  class="modal fade" id="modalPanier" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">PANIER</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                    <table class=" table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>PHOTO</th>
+                                    <th>LIBELLE</th>
+                                    <th>QUANTITE</th>
+                                    <th>Pu</th>
+                                    <th>PT</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contenuPanier">
+
+                            </tbody>
+                            <tfoot>
+                                <td>TOTAL :</td>
+                                <td id="total">0 FCFA</td>
+                            </tfoot>
+                    </table>
+              </div>
+             
+            </div>
+          </div>
+    </div>
+
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="index.js"></script>
+
+
+
+</body>
+</html>

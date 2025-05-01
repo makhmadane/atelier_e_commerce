@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/css/bootstrap.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 </head>
 <body>
@@ -16,7 +17,7 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="col-md-3">
-                <button class="btn btn-secondary float-end" data-toggle="modal" data-target="#modalPanier" onclick="displayPanier()" >Panier</button>
+                <button class="btn btn-secondary float-end" data-toggle="modal" data-target="#modalPanier" onclick="displayPanier('contenuPanier')" >Panier</button>
             </div>
         </nav>
     </div>
@@ -32,7 +33,7 @@
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">PANIER</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                  <span>&times;</span>
                 </button>
               </div>
               <div class="modal-body">
@@ -55,12 +56,101 @@
                                 <td id="total">0 FCFA</td>
                             </tfoot>
                     </table>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modalClient">Valider</button>
+                    </div>
               </div>
              
             </div>
           </div>
     </div>
+    <!--Modal Info Client-->
+    <div  class="modal fade" id="modalClient" >
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Informations du Client</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span >&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                  <form action="">
+                    <label for="nom_complet">Nom_Complet</label>
+                    <input type="text" class="form-control" id="nom_complet">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" autocomplete="email">
+                    <label for="tel">Tel</label>
+                    <input type="text" class="form-control" id="tel" autocomplete="tel">
 
+                  </form>
+                  <div class="modal-footer">
+                      <button class="btn btn-primary" data-dismiss="modal"  data-toggle="modal" data-target="#modalFacture" onclick="printFacture()">Valider</button>
+                  </div>
+            </div>
+           
+          </div>
+        </div>
+  </div>
+  <!--Model Facture-->
+  <div  class="modal fade" id="modalFacture" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Informations de la Facture</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span >&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+                <div class="container" id="infoPdf">
+                    <h1>Facture n : ----</h1>
+                    <h2>Date de facturation : </h1>
+                    <table class="table table-stripped">
+                       <tr>
+                          <td>Nom</td>
+                          <td>Age</td>
+                          <td>Email</td>
+                          <td>Téléphone</td>
+                       </tr>
+                       <tbody id="infoClient">
+
+                       </tbody>
+                    </table>
+           
+                      <table class=" table table-bordered" >
+                        <thead>
+                            <tr>
+                                
+                                <th>LIBELLE</th>
+                                <th>QUANTITE</th>
+                                <th>PT</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody id="contenuFactureProduit">
+
+                        </tbody>
+                        <tfoot>
+                            <td>TOTAL :</td>
+                            <td id="totalFacture">0 FCFA</td>
+                        </tfoot>
+                </table>
+               
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal" onclick="generatePDF()"   >Imprimer</button>
+                </div>
+          </div>
+         
+        </div>
+      </div>
+</div>
+
+  <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
     <script src="js/jquery.slim.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="index.js"></script>
